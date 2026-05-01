@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Моё обучение Git и VS Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #1f2933;
+      background: #f5f7fa;
+      line-height: 1.6;
+    }
+    header {
+      background: #111827;
+      color: #f9fafb;
+      padding: 24px 16px;
+    }
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+    }
+    header p {
+      margin: 0;
+      max-width: 720px;
+      font-size: 15px;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    section {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    }
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 20px;
+      color: #111827;
+    }
+    section h3 {
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-size: 16px;
+      color: #111827;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 6px 0 4px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 13px;
+    }
+    .tagline {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+    .block-number {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Пошаговое обучение Git в VS Code</h1>
+  <p>Конспект моего личного обучения Git: от первого локального репозитория до работы с ветками и merge — на примере проекта <code>snake_game</code>.</p>
+  <p class="tagline">ОС: Windows 11 · Инструменты: Git + Visual Studio Code</p>
+</header>
+
+<main>
+  <section id="intro">
+    <div class="block-number">Блок 1</div>
+    <h2>Введение: что такое Git и зачем он нужен</h2>
+    <ul>
+      <li>Git — система контроля версий: хранит историю изменений файлов и позволяет откатываться назад.</li>
+      <li>Для аналитика это «история версий отчёта», только автоматизированная и удобная.</li>
+      <li>В связке с VS Code можно работать с Git почти без командной строки.</li>
+    </ul>
+  </section>
+
+  <section id="setup">
+    <div class="block-number">Блок 2</div>
+    <h2>Подготовка окружения</h2>
+
+    <h3>2.1. Установка Git и VS Code</h3>
+    <ul>
+      <li>Установить Git для Windows с настройками по умолчанию.</li>
+      <li>Установить Visual Studio Code.</li>
+      <li>Проверить, что VS Code видит Git: вкладка Source Control активна, иконка Git отображается.</li>
+    </ul>
+
+    <h3>2.2. Первая тренировочная папка</h3>
+    <ul>
+      <li>Создать на диске папку проекта, например <code>snake_game</code> или <code>git-training</code>.</li>
+      <li>Открыть папку в VS Code: <code>File → Open Folder...</code>.</li>
+      <li>Дальше все действия выполняются внутри этой папки.</li>
+    </ul>
+  </section>
+
+  <section id="first-repo">
+    <div class="block-number">Блок 3</div>
+    <h2>Первый локальный репозиторий и коммит</h2>
+
+    <h3>3.1. Инициализация Git в папке</h3>
+    <ul>
+      <li>Открыть вкладку Source Control в VS Code.</li>
+      <li>Нажать кнопку «Initialize Repository» для текущей папки проекта.</li>
+      <li>Папка становится Git‑репозиторием, и изменения начнёт отслеживать Git.</li>
+    </ul>
+
+    <h3>3.2. Создание тестового файла</h3>
+    <ul>
+      <li>Создать файл, например <code>snake_game</code> или <code>notes.txt</code>.</li>
+      <li>Написать в нём любой текст, сохранить файл.</li>
+      <li>Убедиться, что файл появился в списке <strong>Changes</strong> во вкладке Source Control.</li>
+    </ul>
+
+    <h3>3.3. Цепочка: рабочая папка → staged → коммит</h3>
+    <ul>
+      <li>В Source Control нажать на <code>+</code> рядом с файлом — он попадёт в <strong>Staged Changes</strong>.</li>
+      <li>Ввести сообщение коммита (например, «Первый коммит») и нажать кнопку <strong>Commit</strong>.</li>
+      <li>Список изменений станет пустым — значит, состояние проекта зафиксировано.</li>
+    </ul>
+  </section>
+
+  <section id="changes-diff">
+    <div class="block-number">Блок 4</div>
+    <h2>Работа с изменениями и diff</h2>
+
+    <h3>4.1. Новые изменения в файле</h3>
+    <ul>
+      <li>Открыть <code>snake_game</code>, изменить одну‑две строки и сохранить.</li>
+      <li>Файл снова появляется в списке <strong>Changes</strong>.</li>
+    </ul>
+
+    <h3>4.2. Просмотр diff</h3>
+    <ul>
+      <li>Кликнуть по файлу в Source Control, чтобы открыть diff‑редактор.</li>
+      <li>В режиме side‑by‑side слева старая версия, справа новая; в inline‑режиме изменения показываются в одном окне.</li>
+      <li>Закрыть diff‑вкладку, чтобы вернуться к обычному виду файла.</li>
+    </ul>
+
+    <h3>4.3. Второй коммит</h3>
+    <ul>
+      <li>Добавить файл в <strong>Staged Changes</strong> через <code>+</code>.</li>
+      <li>Сделать новый коммит с понятным сообщением.</li>
+      <li>Снова убедиться, что список изменений пуст.</li>
+    </ul>
+  </section>
+
+  <section id="undo">
+    <div class="block-number">Блок 5</div>
+    <h2>Откат изменений: Discard и Undo Last Commit</h2>
+
+    <h3>5.1. Discard Changes (откат незакоммиченных правок)</h3>
+    <ul>
+      <li>Изменить файл, сохранить его, увидеть файл в списке <strong>Changes</strong>.</li>
+      <li>Нажать на иконку Discard (стрелка назад) рядом с файлом и подтвердить.</li>
+      <li>Файл вернётся к состоянию последнего коммита, изменения исчезнут.</li>
+    </ul>
+
+    <h3>5.2. Undo Last Commit (отмена коммита, но не правок)</h3>
+    <ul>
+      <li>Сделать коммит с «неудачными» изменениями.</li>
+      <li>Вызвать команду <strong>Undo Last Commit</strong> во вкладке Source Control.</li>
+      <li>Коммит исчезнет из истории, но изменения останутся в файлах как незакоммиченные.</li>
+      <li>При необходимости можно дополнительно сделать Discard, чтобы вернуть код к предыдущему стабильному виду.</li>
+    </ul>
+  </section>
+
+  <section id="branches">
+    <div class="block-number">Блок 6</div>
+    <h2>Ветки: отдельные линии развития проекта</h2>
+
+    <h3>6.1. Идея ветки</h3>
+    <ul>
+      <li>Ветка — это параллельная версия проекта для экспериментов.</li>
+      <li>Главная ветка обычно называется <code>main</code>.</li>
+      <li>Название текущей ветки видно в статус‑баре VS Code, внизу слева.</li>
+    </ul>
+
+    <h3>6.2. Создание ветки <code>experiment</code></h3>
+    <ul>
+      <li>Создать новую ветку <code>experiment</code> от <code>main</code> прямо в VS Code.</li>
+      <li>Переключиться на неё и убедиться, что внизу отображается <code>experiment</code>.</li>
+    </ul>
+
+    <h3>6.3. Работа в ветке</h3>
+    <ul>
+      <li>Изменить <code>snake_game</code> в ветке <code>experiment</code> и сделать один или несколько коммитов.</li>
+      <li>Переключиться обратно на <code>main</code> — там будет старая версия файла, без экспериментальных изменений.</li>
+    </ul>
+  </section>
+
+  <section id="merge">
+    <div class="block-number">Блок 7</div>
+    <h2>Объединение веток (merge) в main</h2>
+
+    <h3>7.1. Подготовка</h3>
+    <ul>
+      <li>Переключиться на ветку <code>main</code>.</li>
+      <li>Проверить, что в <code>main</code> пока нет изменений из <code>experiment</code>.</li>
+    </ul>
+
+    <h3>7.2. Merge ветки <code>experiment</code> в <code>main</code></h3>
+    <ul>
+      <li>В VS Code выбрать действие <strong>Merge Branch…</strong>.</li>
+      <li>Указать, что нужно слить ветку <code>experiment</code> в текущую ветку <code>main</code>.</li>
+      <li>После успешного merge открыть <code>snake_game</code> в <code>main</code> и убедиться, что в нём появились изменения из <code>experiment</code>.</li>
+    </ul>
+  </section>
+
+  <section id="summary">
+    <div class="block-number">Блок 8</div>
+    <h2>Что я уже умею</h2>
+    <ul>
+      <li>Настраивать Git и VS Code и инициализировать локальный репозиторий.</li>
+      <li>Создавать файлы, отслеживать изменения и делать коммиты через Source Control.</li>
+      <li>Смотреть diff, откатывать незакоммиченные правки и отменять последний коммит.</li>
+      <li>Создавать ветки, работать в них и объединять изменения обратно в <code>main</code>.</li>
+    </ul>
+    <p>Следующий шаг: подключить GitHub, настроить удалённый репозиторий и научиться работать с <code>push</code>/<code>pull</code> из VS Code.</p>
+  </section>
+</main>
+</body>
+</html>
