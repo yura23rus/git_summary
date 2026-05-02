@@ -130,7 +130,10 @@
     <option value="undo">Блок 5: Откат изменений</option>
     <option value="branches">Блок 6: Ветки</option>
     <option value="merge">Блок 7: Merge веток</option>
-    <option value="summary">Блок 8: Что я уже умею</option>
+    <option value="summary">Блок 8: Подключение GitHub и первый push (Sync Changes)</option>
+    <option value="merge">Блок 9: Публикация сайта через GitHub Pages</option>
+    <option value="dev-main-workflow">Блок 10: Рабочий workflow с веткой dev и main</option>
+    <option value="vscode-agent">Блок 11: Использование агента VS Code для ускорения работы</option>
   </select>
 </div>
 
@@ -279,17 +282,83 @@
     </ul>
   </section>
 
-  <section id="summary">
+  <section id="github-connect">
     <div class="block-number">Блок 8</div>
-    <h2>Что я уже умею</h2>
+    <h2>Подключение GitHub и первый push (Sync Changes)</h2>
+
     <ul>
-      <li>Настраивать Git и VS Code и инициализировать локальный репозиторий.</li>
-      <li>Создавать файлы, отслеживать изменения и делать коммиты через Source Control.</li>
-      <li>Смотреть diff, откатывать незакоммиченные правки и отменять последний коммит.</li>
-      <li>Создавать ветки, работать в них и объединять изменения обратно в <code>main</code>.</li>
+      <li>Создать репозиторий на GitHub через веб‑интерфейс без автогенерации README.</li>
+      <li>В VS Code опубликовать локальный проект на GitHub через кнопку <strong>Publish to GitHub</strong> во вкладке Source Control.</li>
+      <li>После привязки репозитория работать по циклу:
+        <ul>
+          <li>внести изменения локально;</li>
+          <li>сохранить файлы;</li>
+          <li>сделать коммит;</li>
+          <li>нажать <strong>Sync Changes</strong> (push/pull), чтобы отправить изменения на GitHub.</li>
+        </ul>
+      </li>
     </ul>
-    <p>Следующий шаг: подключить GitHub, настроить удалённый репозиторий и научиться работать с <code>push</code>/<code>pull</code> из VS Code.</p>
   </section>
+
+  <section id="github-pages">
+    <div class="block-number">Блок 9</div>
+    <h2>Публикация сайта через GitHub Pages</h2>
+
+    <ul>
+      <li>В репозитории на GitHub открыть вкладку <code>Settings → Pages</code>.</li>
+      <li>В разделе <strong>Build and deployment</strong> выбрать:
+        <ul>
+          <li><strong>Source</strong>: <code>Deploy from a branch</code>;</li>
+          <li><strong>Branch</strong>: <code>main</code>;</li>
+          <li><strong>Folder</strong>: <code>/ (root)</code>, затем сохранить настройки.</li>
+        </ul>
+      </li>
+      <li>Убедиться, что в корне репозитория есть файл <code>index.html</code> — он будет стартовой страницей сайта.</li>
+      <li>Через 1–2 минуты открыть адрес вида <code>https://&lt;имя_пользователя&gt;.github.io/&lt;имя_репозитория&gt;/</code> и проверить, что сайт с конспектом открывается.</li>
+    </ul>
+  </section>
+
+  <section id="dev-main-workflow">
+    <div class="block-number">Блок 10</div>
+    <h2>Рабочий workflow с веткой dev и main</h2>
+
+    <ul>
+      <li>Использовать ветку <code>main</code> как стабильную версию проекта, которая публикуется на GitHub Pages.</li>
+      <li>Создать ветку <code>dev</code> для экспериментов и правок:
+        <ul>
+          <li>переключаться на неё в VS Code через выбор ветки в статус‑баре;</li>
+          <li>вносить изменения и просматривать их локально, открывая <code>index.html</code> в браузере;</li>
+          <li>делать небольшие осмысленные коммиты.</li>
+        </ul>
+      </li>
+      <li>Когда изменения в <code>dev</code> готовы:
+        <ul>
+          <li>переключиться на ветку <code>main</code>;</li>
+          <li>выполнить команду <strong>Git: Merge Branch...</strong> и выбрать ветку <code>dev</code>;</li>
+          <li>сделать <strong>Sync Changes</strong>, чтобы отправить обновлённую <code>main</code> на GitHub и дождаться обновления сайта.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="vscode-agent">
+    <div class="block-number">Блок 11</div>
+    <h2>Использование агента VS Code для ускорения работы</h2>
+
+    <ul>
+      <li>Открыть чат‑агента в VS Code (Copilot Chat или другой установленный помощник).</li>
+      <li>Формулировать задачи на естественном языке, например:
+        <ul>
+          <li>«Добавь выпадающее меню навигации по блокам на странице»;</li>
+          <li>«Создай вторую HTML‑страницу с кратким описанием удалённых репозиториев»;</li>
+          <li>«Аккуратно отрефакторь существующий HTML, не ломая структуру».</li>
+        </ul>
+      </li>
+      <li>Внимательно просматривать предлагаемые изменения, принимать только понятный и нужный код.</li>
+      <li>После применения использовать обычный Git‑цикл: сохранить файл, сделать коммит и нажать <strong>Sync Changes</strong>, а при необходимости выполнить merge в <code>main</code>.</li>
+    </ul>
+  </section>
+
 </main>
 
 <script>
