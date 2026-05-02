@@ -78,6 +78,38 @@
       color: #6b7280;
       margin-bottom: 4px;
     }
+    .nav-menu {
+      background: #1f2937;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-menu label {
+      color: #e5e7eb;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-menu select {
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #4b5563;
+      border-radius: 4px;
+      background: #374151;
+      color: #f3f4f6;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+    .nav-menu select:hover {
+      background: #4b5563;
+      border-color: #6b7280;
+    }
+    .nav-menu select:focus {
+      outline: none;
+      background: #4b5563;
+      border-color: #9ca3af;
+    }
   </style>
 </head>
 <body>
@@ -86,6 +118,21 @@
   <p>Конспект моего личного обучения Git: от первого локального репозитория до работы с ветками и merge — на примере проекта <code>snake_game</code>.</p>
   <p class="tagline">ОС: Windows 11 · Инструменты: Git + Visual Studio Code</p>
 </header>
+
+<div class="nav-menu">
+  <label for="menu-select">Перейти к блоку:</label>
+  <select id="menu-select">
+    <option value="">— Выберите блок —</option>
+    <option value="intro">Блок 1: Введение</option>
+    <option value="setup">Блок 2: Подготовка окружения</option>
+    <option value="first-repo">Блок 3: Первый репозиторий и коммит</option>
+    <option value="changes-diff">Блок 4: Работа с изменениями и diff</option>
+    <option value="undo">Блок 5: Откат изменений</option>
+    <option value="branches">Блок 6: Ветки</option>
+    <option value="merge">Блок 7: Merge веток</option>
+    <option value="summary">Блок 8: Что я уже умею</option>
+  </select>
+</div>
 
 <main>
   <section id="intro">
@@ -244,5 +291,22 @@
     <p>Следующий шаг: подключить GitHub, настроить удалённый репозиторий и научиться работать с <code>push</code>/<code>pull</code> из VS Code.</p>
   </section>
 </main>
+
+<script>
+  const menuSelect = document.getElementById('menu-select');
+  
+  menuSelect.addEventListener('change', function() {
+    if (this.value) {
+      const element = document.getElementById(this.value);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Сброс значения для возможности повторного выбора
+        setTimeout(() => {
+          this.value = '';
+        }, 500);
+      }
+    }
+  });
+</script>
 </body>
 </html>
